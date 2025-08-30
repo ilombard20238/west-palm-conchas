@@ -9,18 +9,32 @@
   <style>
     /* Specific styling for About page team image */
     .intro-img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 20px auto;
-      display: block;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 350px;           /* bigger size to show more of the photo */
+      height: 350px;          /* keep it square for circular shape */
+      border-radius: 50%;     /* makes it circular */
+      object-fit: cover;      /* ensures image fills the circle */
+      margin: 20px auto;      /* centers it horizontally */
+      display: block;         /* needed for margin auto */
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25); /* slightly stronger shadow */
       border: 5px solid #ffe0b2; /* pastel border */
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
     .intro-img:hover {
       transform: scale(1.05); /* cute hover effect */
+      box-shadow: 0 10px 20px rgba(255, 224, 178, 0.5); /* soft pastel glow on hover */
+    }
+
+    .menu h2 {
+      color: #6d4c41;
+      margin-bottom: 10px;
+    }
+
+    .menu p {
+      max-width: 700px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+      font-size: 1.1rem;
     }
   </style>
 </head>
