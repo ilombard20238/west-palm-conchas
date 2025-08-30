@@ -1,94 +1,122 @@
-<section class="menu contact-section">
-  <h2>Contact Us</h2>
-  <p class="contact-info">Phone: (561) 727-6649</p>
-  <p class="contact-info">Visit us at: 213 Fleming Ave, Greenacres FL</p>
-
-  <h3>Send Us a Message</h3>
-  <form id="contact-form" class="contact-form">
-    <input type="text" id="contact-name" placeholder="Your Name" required class="contact-input">
-    <input type="tel" id="contact-phone" placeholder="Your Phone Number" required class="contact-input">
-    <textarea id="contact-message" placeholder="Your Message" rows="5" class="contact-input"></textarea>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
-</section>
-
-<style>
-  /* Contact Section Styling */
-  .contact-section {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    background: #fffaf5;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-
-  .contact-section h2, .contact-section h3 {
-    color: #6d4c41;
-    margin-bottom: 15px;
-  }
-
-  .contact-info {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .contact-input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    transition: border 0.3s, box-shadow 0.3s;
-  }
-
-  .contact-input:focus {
-    border-color: #a1887f;
-    box-shadow: 0 0 8px rgba(161,136,127,0.3);
-    outline: none;
-  }
-
-  .contact-form .btn {
-    background: #a1887f;
-    color: #fff8f0;
-    font-weight: bold;
-    border-radius: 25px;
-    padding: 12px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-  }
-
-  .contact-form .btn:hover {
-    background: #6d4c41;
-    transform: scale(1.05);
-  }
-</style>
-
-<script>
-  const bakeryPhone = "15615021743"; // your bakery number
-  const contactForm = document.getElementById("contact-form");
-
-  contactForm.addEventListener("submit", function(e) {
-    e.preventDefault(); // prevent default form submission
-
-    const name = document.getElementById("contact-name").value.trim();
-    const phone = document.getElementById("contact-phone").value.trim();
-    const message = document.getElementById("contact-message").value.trim();
-
-    if(!name || !phone || !message){
-      alert("Please fill in all fields!");
-      return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - West Palm Conchas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Contact Page Styling to match other pages */
+    .contact-section {
+      max-width: 650px;
+      margin: 40px auto;
+      background: #fffaf5;
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    const whatsappMessage = `Hello! My name is ${name}, my phone number is ${phone}. Message: ${message}`;
-    window.open(`https://wa.me/${bakeryPhone}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
-  });
-</script>
+    .contact-section h2, .contact-section h3 {
+      color: #6d4c41;
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .contact-input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-input:focus {
+      border-color: #a1887f;
+      box-shadow: 0 0 8px rgba(161,136,127,0.3);
+      outline: none;
+    }
+
+    .contact-form .btn {
+      background: #a1887f;
+      color: #fff8f0;
+      font-weight: bold;
+      border-radius: 25px;
+      padding: 12px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .contact-form .btn:hover {
+      background: #6d4c41;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.jpg" alt="West Palm Conchas Logo">
+    <h1>West Palm Conchas</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Your Order</a>
+    </nav>
+  </header>
+
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <p class="contact-info">Phone: (561) 727-6649</p>
+    <p class="contact-info">Visit us at: 213 Fleming Ave, Greenacres FL</p>
+
+    <h3>Send Us a Message</h3>
+    <form id="contact-form" class="contact-form">
+      <input type="text" id="contact-name" placeholder="Your Name" required class="contact-input">
+      <input type="tel" id="contact-phone" placeholder="Your Phone Number" required class="contact-input">
+      <textarea id="contact-message" placeholder="Your Message" rows="5" class="contact-input"></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 West Palm Conchas | Made with ❤️</p>
+  </footer>
+
+  <script>
+    const bakeryPhone = "15615021743"; // your bakery number
+    const contactForm = document.getElementById("contact-form");
+
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent default form submission
+
+      const name = document.getElementById("contact-name").value.trim();
+      const phone = document.getElementById("contact-phone").value.trim();
+      const message = document.getElementById("contact-message").value.trim();
+
+      if(!name || !phone || !message){
+        alert("Please fill in all fields!");
+        return;
+      }
+
+      const whatsappMessage = `Hello! My name is ${name}, my phone number is ${phone}. Message: ${message}`;
+      window.open(`https://wa.me/${bakeryPhone}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+    });
+  </script>
+</body>
+</html>
