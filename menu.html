@@ -6,6 +6,29 @@
   <title>Menu - West Palm Conchas</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Optional extra styling for menu grid */
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+      margin-top: 2rem;
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .menu-item img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -24,128 +47,103 @@
     <h2>Our Menu</h2>
     <div class="menu-items">
 
-      <!-- Croissant Options -->
       <div class="menu-item">
-        <img src="images/croissant.jpg" alt="Croissant" data-title="Croissant" data-desc="A buttery and golden brown Croissant. Choose Plain, Guava, or Cheese.">
-        <h3>Croissant</h3>
-        <p>
-          <button class="croissant-option" data-item="Plain Croissant" data-price="2.00">$2.00 Plain</button>
-          <button class="croissant-option" data-item="Guava Croissant" data-price="2.50">$2.50 Guava</button>
-          <button class="croissant-option" data-item="Cheese Croissant" data-price="2.50">$2.50 Cheese</button>
-        </p>
+        <img src="images/croissant.jpg" alt="Croissant">
+        <h3>Butter Croissant</h3>
+        <p>$3.00</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Butter Croissant" data-price="3.00">Add to Order</button>
       </div>
 
-      <!-- Cinnamon Concha -->
       <div class="menu-item">
-        <img src="images/cinnamon-vanilla.jpg" alt="Cinnamon Concha">
-        <h3>Cinnamon Concha</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Cinnamon Concha" data-price="2.00">Add to Order</button>
+        <img src="images/cinnamon-vanilla.jpg" alt="Cinnamon Vanilla">
+        <h3>Cinnamon Vanilla</h3>
+        <p>$3.50</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Cinnamon Vanilla" data-price="3.50">Add to Order</button>
       </div>
 
-      <!-- Chocolate Concha -->
       <div class="menu-item">
         <img src="images/chocolate-concha.jpg" alt="Chocolate Concha">
         <h3>Chocolate Concha</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Chocolate Concha" data-price="2.00">Add to Order</button>
+        <p>$2.50</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Chocolate Concha" data-price="2.50">Add to Order</button>
       </div>
 
-      <!-- Vanilla Concha -->
       <div class="menu-item">
         <img src="images/vanilla1.jpg" alt="Vanilla Concha">
         <h3>Vanilla Concha</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Vanilla Concha" data-price="2.00">Add to Order</button>
+        <p>$2.50</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Vanilla Concha" data-price="2.50">Add to Order</button>
       </div>
 
-      <!-- Banana Bread -->
       <div class="menu-item">
         <img src="images/Banana Bread.jpg" alt="Banana Bread">
         <h3>Banana Bread</h3>
-        <p><strong>$10.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Banana Bread" data-price="10.00">Add to Order</button>
+        <p>$4.00</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Banana Bread" data-price="4.00">Add to Order</button>
       </div>
 
-      <!-- Mini Banana Bread -->
       <div class="menu-item">
-        <img src="images/bananabreadbabe.jpg" alt="Mini Banana Bread">
-        <h3>Mini Banana Bread</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Mini Banana Bread" data-price="2.00">Add to Order</button>
+        <img src="images/bananabreadbabe.jpg" alt="Banana Bread Babe">
+        <h3>Banana Bread Babe</h3>
+        <p>$4.50</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Banana Bread Babe" data-price="4.50">Add to Order</button>
       </div>
 
-      <!-- Guava Pastry -->
       <div class="menu-item">
         <img src="images/guava-pastry.jpg" alt="Guava Pastry">
         <h3>Guava Pastry</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Guava Pastry" data-price="2.00">Add to Order</button>
+        <p>$3.75</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Guava Pastry" data-price="3.75">Add to Order</button>
       </div>
 
-      <!-- Quesito -->
       <div class="menu-item">
-        <img src="images/quecito.jpg" alt="Quesito">
-        <h3>Quesito</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Quesito" data-price="2.00">Add to Order</button>
+        <img src="images/quecito.jpg" alt="Quequito">
+        <h3>Quequito</h3>
+        <p>$2.25</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Quequito" data-price="2.25">Add to Order</button>
       </div>
 
-      <!-- Cream Puff -->
       <div class="menu-item">
         <img src="images/creampuff.jpg" alt="Cream Puff">
         <h3>Cream Puff</h3>
-        <p><strong>$2.50</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Cream Puff" data-price="2.50">Add to Order</button>
+        <p>$3.00</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Cream Puff" data-price="3.00">Add to Order</button>
       </div>
 
-      <!-- Deditos -->
       <div class="menu-item">
-        <img src="images/dedito.jpg" alt="Deditos">
-        <h3>Deditos</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Deditos" data-price="2.00">Add to Order</button>
+        <img src="images/dedito.jpg" alt="Dedito">
+        <h3>Dedito</h3>
+        <p>$2.75</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Dedito" data-price="2.75">Add to Order</button>
       </div>
 
-      <!-- Orange Concha -->
       <div class="menu-item">
         <img src="images/orangeconcha.jpg" alt="Orange Concha">
         <h3>Orange Concha</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Orange Concha" data-price="2.00">Add to Order</button>
+        <p>$2.75</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="Orange Concha" data-price="2.75">Add to Order</button>
       </div>
 
-      <!-- Sesame seed Bread -->
       <div class="menu-item">
-        <img src="images/pdm.jpg" alt="Sesame seed Bread">
-        <h3>Sesame seed Bread</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Sesame seed Bread" data-price="2.00">Add to Order</button>
+        <img src="images/pdm.jpg" alt="PDM">
+        <h3>PDM</h3>
+        <p>$3.25</p>
+        <input type="number" value="1" min="1">
+        <button class="add-to-order" data-item="PDM" data-price="3.25">Add to Order</button>
       </div>
-    </div>
-  </section>
 
-  <!-- Cart Section on the Menu Page -->
-  <section class="cart">
-    <h3>Your Order</h3>
-    <ul id="order-list"></ul>
-    <p><strong>Total: $<span id="order-total">0.00</span></strong></p>
-    <input type="text" id="customer-name" placeholder="Your Name">
-    <button id="send-order">Send Order via WhatsApp</button>
-    <button id="send-sms">Send Order via SMS</button>
-    <div id="paypal-button-container" style="margin-top:10px;"></div>
-    <button id="clear-order">Clear Order</button>
+    </div>
   </section>
 
   <footer>
@@ -153,6 +151,5 @@
   </footer>
 
   <script src="main.js"></script>
-  <script src="https://www.paypal.com/sdk/js?client-id=AXESmgDhC91CvuzYW0d9MJb2WxTdphJq7n10qh30ewl6qZ6361LtMFmu8Uvz0MlFpzpyA4QJSeYXyGPc&currency=USD"></script>
 </body>
 </html>
