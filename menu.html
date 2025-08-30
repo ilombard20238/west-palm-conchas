@@ -85,14 +85,22 @@
     <h2>Our Menu</h2>
     <div class="menu-items">
 
-       <!-- Croissant -->
-      <div class="menu-item">
-        <img src="images/croissant.jpg" alt="Croissant" data-title="Croissant" data-desc="A buttery and golden brown Croissant coming with three flavors including plain, guava filled, and cheese filled.">
-        <h3>Croissant</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="0">
-        <button class="add-to-order" data-item="Croissant" data-price="2.00">Add to Order</button>
-      </div>
+      <img src="images/croissant.jpg" alt="Butter Croissant">
+  <h3>Butter Croissant</h3>
+
+  <!-- Options select -->
+  <label for="croissant-flavor">Choose your croissant:</label>
+  <select id="croissant-flavor" class="menu-option">
+    <option value="Plain" data-price="2.00">Plain - $2.00</option>
+    <option value="Guava Filled" data-price="2.50">Guava Filled - $2.50</option>
+    <option value="Cheese Filled" data-price="2.50">Cheese Filled - $2.50</option>
+  </select>
+
+  <label for="croissant-qty">Quantity:</label>
+  <input type="number" id="croissant-qty" value="1" min="1">
+
+  <button class="add-to-order">Add to Order</button>
+</div>
       <!-- Cinnamon Concha -->
       <div class="menu-item">
         <img src="images/cinnamon-vanilla.jpg" alt="Cinnamon Concha" data-title="Cinnamon Concha" data-desc="Soft bread with cinnamon topping.">
