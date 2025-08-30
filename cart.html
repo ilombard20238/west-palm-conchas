@@ -27,7 +27,10 @@
     <input type="text" id="customer-name" placeholder="Your Name">
     <button id="send-order">Send Order via WhatsApp</button>
     <button id="send-sms">Send Order via SMS</button>
-    <div id="paypal-button-container" style="margin-top:10px;"></div>
+
+    <!-- PayPal button container -->
+    <div id="paypal-button-container" style="margin-top:15px;"></div>
+
     <button id="clear-order">Clear Order</button>
   </section>
 
@@ -36,7 +39,42 @@
   </footer>
 
   <script src="main.js"></script>
+
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AXESmgDhC91CvuzYW0d9MJb2WxTdphJq7n10qh30ewl6qZ6361LtMFmu8Uvz0MlFpzpyA4QJSeYXyGPc&currency=USD"></script>
+
+  <script>
+    // PayPal button integration
+    let totalAmount = 0; // you can dynamically update this with your cart total
+
+    // Update total dynamically if you have JS cart logic
+    const orderTotal = document.getElementById("order-total");
+    function updateTotal(value) {
+      totalAmount = parseFloat(value);
+      orderTotal.textContent = totalAmount.toFixed(2);
+    }
+
+    // Render PayPal button
+    paypal.Buttons({
+      createOrder: (data, actions) => {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: totalAmount.toFixed(2) // total amount from cart
+            }
+          }]
+        });
+      },
+      onApprove: (data, actions) => {
+        return actions.order.capture().then(details => {
+          alert(`Transaction completed by ${details.payer.name.given_name}!`);
+          // Optional: Clear order after successful payment
+          document.getElementById("order-list").innerHTML = "";
+          orderTotal.textContent = "0.00";
+          document.getElementById("customer-name").value = "";
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
 </body>
 </html>
