@@ -6,7 +6,6 @@ const orderList = document.getElementById("order-list");
 const orderTotal = document.getElementById("order-total");
 const bubbleTotal = document.getElementById("bubble-total");
 const phoneNumber = "15615021743"; // bakery number
-const cartBubble = document.getElementById("cart-bubble");
 
 // ====== Add to Cart Function ======
 function addItemToCart(item, price, qty) {
@@ -25,15 +24,27 @@ function addItemToCart(item, price, qty) {
   if(bubbleTotal) bubbleTotal.textContent = total.toFixed(2);
 }
 
-// ====== Animate Buttons ======
+// ====== Animate Buttons & Handle Flavor Selection ======
 document.querySelectorAll(".add-to-order").forEach(btn => {
   btn.addEventListener("click", () => {
     btn.classList.add("clicked");
     setTimeout(() => btn.classList.remove("clicked"), 200);
 
-    const item = btn.dataset.item;
-    const price = parseFloat(btn.dataset.price);
-    const qty = parseInt(btn.previousElementSibling.value || 1);
+    let item = btn.dataset.item;
+    let price = parseFloat(btn.dataset.price);
+    let qty = parseInt(btn.previousElementSibling.value || 1);
+
+    // Handle items with flavor select (like Butter Croissant)
+    if(btn.dataset.flavorSelect) {
+      const flavorSelect = document.getElementById(btn.dataset.flavorSelect);
+      if(flavorSelect) {
+        const selectedOption = flavorSelect.options[flavorSelect.selectedIndex];
+        const flavor = selectedOption.value;
+        price = parseFloat(selectedOption.dataset.price);
+        item = `${item} (${flavor})`;
+      }
+    }
+
     addItemToCart(item, price, qty);
   });
 });
