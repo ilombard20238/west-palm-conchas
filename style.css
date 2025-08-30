@@ -144,3 +144,23 @@ footer {
 .intro-img { width:100%; border-radius:12px; margin-top:20px; }
 
 .contact-input { width:100%; padding:8px; margin-bottom:10px; border-radius:6px; }
+
+#cart-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 1000;
+}
+
+#cart-bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
