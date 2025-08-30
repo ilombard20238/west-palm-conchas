@@ -3,62 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu - West Palm Conchas</title>
+  <title>Your Order - West Palm Conchas</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Menu Grid Styling */
-    .menu-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      justify-items: center;
-      margin-top: 2rem;
-    }
-
-    .menu-item img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 12px;
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-
-    .menu-item img:hover { transform: scale(1.05); }
-
-    /* Button Styling with click effect */
-    .add-to-order {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 15px;
-      background: #a1887f;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: transform 0.1s, box-shadow 0.2s;
-      position: relative;
-    }
-
-    .add-to-order:hover { background: #6d4c41; box-shadow: 0 0 8px #ffe0b2; }
-
-    .add-to-order:active {
-      animation: clickEffect 0.2s ease forwards;
-    }
-
-    @keyframes clickEffect {
-      0% { transform: scale(1); box-shadow: 0 0 0px #ffe0b2; }
-      50% { transform: scale(1.1); box-shadow: 0 0 12px #ffe0b2; }
-      100% { transform: scale(1); box-shadow: 0 0 0px #ffe0b2; }
-    }
-  </style>
 </head>
 <body>
-
-  <!-- Cart Bubble -->
-  <a href="cart.html" id="cart-bubble">🛒 $<span id="bubble-total">0.00</span></a>
-
   <header>
     <img src="images/logo.jpg" alt="West Palm Conchas Logo">
     <h1>West Palm Conchas</h1>
@@ -71,124 +20,26 @@
     </nav>
   </header>
 
-  <section class="menu">
-    <h2>Our Menu</h2>
-    <div class="menu-items">
+  <section class="cart">
+    <h3>Your Order</h3>
+    <ul id="order-list"></ul>
+    <p><strong>Total: $<span id="order-total">0.00</span></strong></p>
 
-      <!-- Butter Croissant with flavors -->
-      <div class="menu-item">
-        <img src="images/croissant.jpg" alt="Butter Croissant">
-        <h3>Butter Croissant</h3>
+    <input type="text" id="customer-name" class="contact-input" placeholder="Your Name">
+    
+    <button id="send-order">Send Order via WhatsApp</button>
+    <button id="send-sms">Send Order via SMS</button>
 
-        <label for="croissant-flavor">Choose your croissant:</label>
-        <select id="croissant-flavor" class="menu-option">
-          <option value="Plain" data-price="2.00">Plain - $2.00</option>
-          <option value="Guava Filled" data-price="2.50">Guava Filled - $2.50</option>
-          <option value="Cheese Filled" data-price="2.50">Cheese Filled - $2.50</option>
-        </select>
-
-        <label for="croissant-qty">Quantity:</label>
-        <input type="number" id="croissant-qty" value="1" min="1">
-
-        <button class="add-to-order" data-item="Butter Croissant" data-flavor-select="croissant-flavor">Add to Order</button>
-      </div>
-
-      <!-- Other items -->
-      <div class="menu-item">
-        <img src="images/cinnamon-vanilla.jpg" alt="Cinnamon Concha">
-        <h3>Cinnamon Concha</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Cinnamon Concha" data-price="2.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/chocolate-concha.jpg" alt="Chocolate Concha">
-        <h3>Chocolate Concha</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Chocolate Concha" data-price="2.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/vanilla1.jpg" alt="Vanilla Concha">
-        <h3>Vanilla Concha</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Vanilla Concha" data-price="2.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/Banana Bread.jpg" alt="Banana Bread">
-        <h3>Banana Bread</h3>
-        <p><strong>$10.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Banana Bread" data-price="10.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/bananabreadbabe.jpg" alt="Mini Banana Bread">
-        <h3>Mini Banana Bread</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Mini Banana Bread" data-price="2.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/guava-pastry.jpg" alt="Guava Pastry">
-        <h3>Guava Pastry</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Guava Pastry" data-price="2.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/quecito.jpg" alt="Quesito">
-        <h3>Quesito</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Quesito" data-price="2.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/creampuff.jpg" alt="Cream Puff">
-        <h3>Cream Puff</h3>
-        <p><strong>$2.50</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Cream Puff" data-price="2.50">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/dedito.jpg" alt="Deditos">
-        <h3>Deditos</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Deditos" data-price="2.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/orangeconcha.jpg" alt="Orange Concha">
-        <h3>Orange Concha</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Orange Concha" data-price="2.00">Add to Order</button>
-      </div>
-
-      <div class="menu-item">
-        <img src="images/pdm.jpg" alt="Sesame seed Bread">
-        <h3>Sesame seed Bread</h3>
-        <p><strong>$2.00</strong></p>
-        <input type="number" value="1" min="1">
-        <button class="add-to-order" data-item="Sesame seed Bread" data-price="2.00">Add to Order</button>
-      </div>
-
-    </div>
+    <div id="paypal-button-container" style="margin-top: 10px;"></div>
+    <button id="clear-order">Clear Order</button>
   </section>
 
   <footer>
     <p>© 2025 West Palm Conchas | Made with ❤️</p>
   </footer>
 
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AXESmgDhC91CvuzYW0d9MJb2WxTdphJq7n10qh30ewl6qZ6361LtMFmu8Uvz0MlFpzpyA4QJSeYXyGPc&currency=USD"></script>
   <script src="main.js"></script>
 </body>
 </html>
