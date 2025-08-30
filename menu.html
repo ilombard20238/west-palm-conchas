@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - West Palm Conchas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/logo.jpg" alt="West Palm Conchas Logo">
+    <h1>West Palm Conchas</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Your Order</a>
+    </nav>
+  </header>
+
+  <section id="menu" class="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <!-- Croissant Options -->
+      <div class="menu-item">
+        <img src="images/croissant.jpg" alt="Croissant" data-title="Croissant" data-desc="A buttery and golden brown Croissant. Choose Plain, Guava, or Cheese.">
+        <h3>Croissant</h3>
+        <p>
+          <button class="croissant-option" data-item="Plain Croissant" data-price="2.00">$2.00 Plain</button>
+          <button class="croissant-option" data-item="Guava Croissant" data-price="2.50">$2.50 Guava</button>
+          <button class="croissant-option" data-item="Cheese Croissant" data-price="2.50">$2.50 Cheese</button>
+        </p>
+      </div>
+
+      <!-- Conchas and Other Pastries -->
+      <!-- Cinnamon Concha -->
+      <div class="menu-item">
+        <img src="images/cinnamon-vanilla.jpg" alt="Cinnamon Concha" data-title="Cinnamon Concha" data-desc="Soft bread with cinnamon topping.">
+        <h3>Cinnamon Concha</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Cinnamon Concha" data-price="2.00">Add to Order</button>
+      </div>
+
+      <!-- Chocolate Concha -->
+      <div class="menu-item">
+        <img src="images/chocolate-concha.jpg" alt="Chocolate Concha" data-title="Chocolate Concha" data-desc="Soft bread with rich chocolate topping.">
+        <h3>Chocolate Concha</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Chocolate Concha" data-price="2.00">Add to Order</button>
+      </div>
+
+      <!-- Vanilla Concha -->
+      <div class="menu-item">
+        <img src="images/vanilla1.jpg" alt="Vanilla Concha" data-title="Vanilla Concha" data-desc="Soft bread with vanilla topping.">
+        <h3>Vanilla Concha</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Vanilla Concha" data-price="2.00">Add to Order</button>
+      </div>
+
+      <!-- Banana Bread -->
+      <div class="menu-item">
+        <img src="images/Banana Bread.jpg" alt="Banana Bread" data-title="Banana Bread" data-desc="Family-size loaf with walnuts.">
+        <h3>Banana Bread</h3>
+        <p><strong>$10.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Banana Bread" data-price="10.00">Add to Order</button>
+      </div>
+
+      <!-- Mini Banana Bread -->
+      <div class="menu-item">
+        <img src="images/bananabreadbabe.jpg" alt="Mini Banana Bread" data-title="Mini Banana Bread" data-desc="Bite-size banana bread with walnuts.">
+        <h3>Mini Banana Bread</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Mini Banana Bread" data-price="2.00">Add to Order</button>
+      </div>
+
+      <!-- Guava Pastry -->
+      <div class="menu-item">
+        <img src="images/guava-pastry.jpg" alt="Guava Pastry" data-title="Guava Pastry" data-desc="Sweet, flaky pastry filled with guava.">
+        <h3>Guava Pastry</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Guava Pastry" data-price="2.00">Add to Order</button>
+      </div>
+
+      <!-- Quesito -->
+      <div class="menu-item">
+        <img src="images/quecito.jpg" alt="Quesito" data-title="Quesito" data-desc="Creamy, cheese-filled pastry with a crunch.">
+        <h3>Quesito</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Quesito" data-price="2.00">Add to Order</button>
+      </div>
+
+      <!-- Cream Puff -->
+      <div class="menu-item">
+        <img src="images/creampuff.jpg" alt="Cream Puff" data-title="Cream Puff" data-desc="Creamy filled Barbarian Bread.">
+        <h3>Cream Puff</h3>
+        <p><strong>$2.50</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Cream Puff" data-price="2.50">Add to Order</button>
+      </div>
+
+      <!-- Deditos -->
+      <div class="menu-item">
+        <img src="images/dedito.jpg" alt="Deditos" data-title="Deditos" data-desc="Flaky pastry with sugar on top.">
+        <h3>Deditos</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Deditos" data-price="2.00">Add to Order</button>
+      </div>
+
+      <!-- Orange Concha -->
+      <div class="menu-item">
+        <img src="images/orangeconcha.jpg" alt="Orange Concha" data-title="Orange Concha" data-desc="Light orange flavored Concha.">
+        <h3>Orange Concha</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Orange Concha" data-price="2.00">Add to Order</button>
+      </div>
+
+      <!-- Sesame seed Bread -->
+      <div class="menu-item">
+        <img src="images/pdm.jpg" alt="Sesame seed Bread" data-title="Sesame seed Bread" data-desc="Light orange flavored sesame bread, perfect for sandwiches.">
+        <h3>Sesame seed Bread</h3>
+        <p><strong>$2.00</strong></p>
+        <input type="number" value="1" min="0">
+        <button class="add-to-order" data-item="Sesame seed Bread" data-price="2.00">Add to Order</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <div class="cart" id="cart">
+    <h3>Your Order</h3>
+    <ul id="order-list"></ul>
+    <p><strong>Total: $<span id="order-total">0.00</span></strong></p>
+    <input type="text" id="customer-name" placeholder="Your Name">
+    <button id="send-order">Send Order via WhatsApp</button>
+    <button id="send-sms">Send Order via SMS</button>
+    <div id="paypal-button-container" style="margin-top:10px;"></div>
+    <button id="clear-order">Clear Order</button>
+  </div>
+
+  <footer>
+    <p>© 2025 West Palm Conchas | Made with ❤️</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AXESmgDhC91CvuzYW0d9MJb2WxTdphJq7n10qh30ewl6qZ6361LtMFmu8Uvz0MlFpzpyA4QJSeYXyGPc&currency=USD"></script>
+</body>
+</html>
