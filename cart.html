@@ -37,14 +37,16 @@
   <button id="send-sms">Send via SMS</button>
   <button id="clear-order">Clear Cart</button>
 
-  <div id="paypal-button-container" style="margin-top: 15px;"></div>
+  <h3>Pay with PayPal</h3>
+  <div id="paypal-button-container"></div>
 </section>
 
 <footer>
   <p>© 2025 West Palm Conchas | Made with ❤️</p>
 </footer>
 
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
 <script src="main.js"></script>
 </body>
 </html>
