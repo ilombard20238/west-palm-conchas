@@ -1,43 +1,44 @@
 // ====== Cart Setup ======
-let order = JSON.parse(localStorage.getItem("cart")) || [];
-let total = order.reduce((sum, c) => sum + c.price * c.qty, 0);
+let order = JSON.parse(localStorage.getItem("cartOrder")) || [];
+let total = parseFloat(localStorage.getItem("cartTotal")) || 0;
 
 const orderList = document.getElementById("order-list");
 const orderTotal = document.getElementById("order-total");
 const bubbleTotal = document.getElementById("bubble-total");
 const phoneNumber = "15615021743"; // bakery number
 
-// ====== Update Bubble & Cart Display ======
-function updateCartDisplay() {
-  const totalAmount = order.reduce((sum, c) => sum + c.price * c.qty, 0);
+// ====== Update Bubble ======
+if(bubbleTotal) bubbleTotal.textContent = total.toFixed(2);
 
-  // Update bubble
-  if (bubbleTotal) bubbleTotal.textContent = totalAmount.toFixed(2);
-
-  // Update cart page list if exists
-  if (orderList) {
-    orderList.innerHTML = "";
-    order.forEach(c => {
-      const li = document.createElement("li");
-      li.textContent = `${c.item} x${c.qty} - $${(c.price * c.qty).toFixed(2)}`;
-      orderList.appendChild(li);
-    });
-    if (orderTotal) orderTotal.textContent = totalAmount.toFixed(2);
-  }
-
-  total = totalAmount;
-}
-
-// ====== Save Cart to localStorage ======
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(order));
-  updateCartDisplay();
+// ====== Render Cart on Cart Page ======
+if(orderList && order.length > 0) {
+  order.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    orderList.appendChild(li);
+  });
+  if(orderTotal) orderTotal.textContent = total.toFixed(2);
 }
 
 // ====== Add to Cart Function ======
 function addItemToCart(item, price, qty) {
-  order.push({ item, price, qty });
-  saveCart();
+  order.push(`${item} x${qty} - $${(price*qty).toFixed(2)}`);
+  total += price * qty;
+
+  // Update localStorage
+  localStorage.setItem("cartOrder", JSON.stringify(order));
+  localStorage.setItem("cartTotal", total);
+
+  // Update floating bubble
+  if(bubbleTotal) bubbleTotal.textContent = total.toFixed(2);
+
+  // Update cart page list if exists
+  if(orderList) {
+    const li = document.createElement("li");
+    li.textContent = `${item} x${qty} - $${(price*qty).toFixed(2)}`;
+    orderList.appendChild(li);
+    if(orderTotal) orderTotal.textContent = total.toFixed(2);
+  }
 }
 
 // ====== Animate Buttons & Handle Flavor Selection ======
@@ -46,14 +47,14 @@ document.querySelectorAll(".add-to-order").forEach(btn => {
     btn.classList.add("clicked");
     setTimeout(() => btn.classList.remove("clicked"), 200);
 
-    let item = btn.dataset.item || btn.previousElementSibling.dataset.item;
-    let price = parseFloat(btn.dataset.price || btn.previousElementSibling.dataset.price || 0);
+    let item = btn.dataset.item;
+    let price = parseFloat(btn.dataset.price) || 0;
     let qty = parseInt(btn.previousElementSibling.value || 1);
 
-    // Handle items with flavor select (like Butter Croissant)
-    if (btn.dataset.flavorSelect) {
+    // Handle flavor select
+    if(btn.dataset.flavorSelect) {
       const flavorSelect = document.getElementById(btn.dataset.flavorSelect);
-      if (flavorSelect) {
+      if(flavorSelect) {
         const selectedOption = flavorSelect.options[flavorSelect.selectedIndex];
         const flavor = selectedOption.value;
         price = parseFloat(selectedOption.dataset.price);
@@ -67,45 +68,46 @@ document.querySelectorAll(".add-to-order").forEach(btn => {
 
 // ====== WhatsApp Order ======
 const sendOrderBtn = document.getElementById("send-order");
-if (sendOrderBtn) {
+if(sendOrderBtn) {
   sendOrderBtn.addEventListener("click", () => {
     const name = document.getElementById("customer-name").value.trim();
-    if (!name || order.length === 0) { alert("Name/order required"); return; }
+    if(!name || order.length === 0) { alert("Name/order required"); return; }
 
-    const msg = `Hello! My name is ${name}. I'd like to order:\n\n${order.map(c => `${c.item} x${c.qty} - $${(c.price*c.qty).toFixed(2)}`).join("\n")}\n\nTotal: $${total.toFixed(2)}`;
+    const msg = `Hello! My name is ${name}. I'd like to order:\n\n${order.join("\n")}\n\nTotal: $${total.toFixed(2)}`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, "_blank");
   });
 }
 
 // ====== SMS Order ======
 const sendSMSBtn = document.getElementById("send-sms");
-if (sendSMSBtn) {
+if(sendSMSBtn) {
   sendSMSBtn.addEventListener("click", () => {
     const name = document.getElementById("customer-name").value.trim();
-    if (!name || order.length === 0) { alert("Name/order required"); return; }
+    if(!name || order.length === 0) { alert("Name/order required"); return; }
 
-    const msg = `Hello! My name is ${name}. I'd like to order:\n\n${order.map(c => `${c.item} x${c.qty} - $${(c.price*c.qty).toFixed(2)}`).join("\n")}\n\nTotal: $${total.toFixed(2)}`;
+    const msg = `Hello! My name is ${name}. I'd like to order:\n\n${order.join("\n")}\n\nTotal: $${total.toFixed(2)}`;
     window.open(`sms:${phoneNumber}?&body=${encodeURIComponent(msg)}`, "_blank");
   });
 }
 
 // ====== Clear Cart ======
 const clearOrderBtn = document.getElementById("clear-order");
-if (clearOrderBtn) {
+if(clearOrderBtn) {
   clearOrderBtn.addEventListener("click", () => {
     order = [];
     total = 0;
-    localStorage.removeItem("cart");
-    if (orderList) orderList.innerHTML = "";
-    if (orderTotal) orderTotal.textContent = "0.00";
-    if (bubbleTotal) bubbleTotal.textContent = "0.00";
+    localStorage.removeItem("cartOrder");
+    localStorage.removeItem("cartTotal");
+    if(orderList) orderList.innerHTML = "";
+    if(orderTotal) orderTotal.textContent = "0.00";
+    if(bubbleTotal) bubbleTotal.textContent = "0.00";
     const customerName = document.getElementById("customer-name");
-    if (customerName) customerName.value = "";
+    if(customerName) customerName.value = "";
   });
 }
 
 // ====== PayPal Checkout ======
-if (document.getElementById("paypal-button-container")) {
+if(document.getElementById("paypal-button-container")) {
   paypal.Buttons({
     createOrder: (data, actions) => {
       return actions.order.create({ purchase_units: [{ amount: { value: total.toFixed(2) } }] });
@@ -115,18 +117,14 @@ if (document.getElementById("paypal-button-container")) {
         alert(`Transaction completed by ${details.payer.name.given_name}!`);
         order = [];
         total = 0;
-        localStorage.removeItem("cart");
-        if (orderList) orderList.innerHTML = "";
-        if (orderTotal) orderTotal.textContent = "0.00";
-        if (bubbleTotal) bubbleTotal.textContent = "0.00";
+        localStorage.removeItem("cartOrder");
+        localStorage.removeItem("cartTotal");
+        if(orderList) orderList.innerHTML = "";
+        if(orderTotal) orderTotal.textContent = "0.00";
+        if(bubbleTotal) bubbleTotal.textContent = "0.00";
         const customerName = document.getElementById("customer-name");
-        if (customerName) customerName.value = "";
+        if(customerName) customerName.value = "";
       });
     }
   }).render('#paypal-button-container');
 }
-
-// ====== Initialize Cart on Page Load ======
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartDisplay();
-});
