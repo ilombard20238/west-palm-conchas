@@ -27,6 +27,7 @@ function renderCart() {
     if(bubbleTotal) bubbleTotal.textContent = total.toFixed(2);
 }
 
+// Initial render to update bubble on menu page
 renderCart();
 
 // ====== Add Item to Cart ======
@@ -34,19 +35,17 @@ function addItemToCart(item, price, qty) {
     const line = `${item} x${qty} - $${(price*qty).toFixed(2)}`;
     order.push(line);
 
-    // Update localStorage
-    localStorage.setItem("cartOrder", JSON.stringify(order));
-    localStorage.setItem("cartTotal", (total + price*qty).toFixed(2));
-
-    // Update total before rendering
+    // Update total and localStorage
     total += price * qty;
+    localStorage.setItem("cartOrder", JSON.stringify(order));
+    localStorage.setItem("cartTotal", total.toFixed(2));
 
-    // Update cart bubble and cart page
-    if(bubbleTotal) bubbleTotal.textContent = total.toFixed(2); // <- this updates the bubble
+    // Update bubble and cart page
+    if(bubbleTotal) bubbleTotal.textContent = total.toFixed(2);
     renderCart();
 }
 
-// ====== Add-to-Order Button Logic ======
+// ====== Add-to-Order Buttons ======
 document.querySelectorAll(".add-to-order").forEach(btn => {
     btn.addEventListener("click", () => {
         btn.classList.add("clicked");
@@ -56,13 +55,13 @@ document.querySelectorAll(".add-to-order").forEach(btn => {
         let price = parseFloat(btn.dataset.price) || 0;
         let qty = 1;
 
-        // Check quantity input
+        // Check quantity input (previous sibling)
         const input = btn.previousElementSibling;
         if(input && input.tagName === "INPUT") {
             qty = parseInt(input.value) || 1;
         }
 
-        // Handle flavor selection
+        // Handle flavor dropdown
         if(btn.dataset.flavorSelect) {
             const flavorSelect = document.getElementById(btn.dataset.flavorSelect);
             if(flavorSelect) {
@@ -107,10 +106,11 @@ document.getElementById("clear-order")?.addEventListener("click", () => {
 
 // ====== PayPal Checkout ======
 function renderPayPal() {
-    if(!document.getElementById("paypal-button-container")) return;
+    const container = document.getElementById("paypal-button-container");
+    if(!container) return;
 
     // Clear existing buttons if any
-    document.getElementById("paypal-button-container").innerHTML = '';
+    container.innerHTML = '';
 
     paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
@@ -129,21 +129,23 @@ function renderPayPal() {
             return actions.order.capture().then(details => {
                 alert(`Thank you ${details.payer.name.given_name}! Your payment of $${total.toFixed(2)} was successful.`);
 
-                // Clear cart after successful payment
+                // Clear cart after payment
                 order = [];
                 total = 0;
                 localStorage.removeItem("cartOrder");
                 localStorage.removeItem("cartTotal");
                 renderCart();
+
+                // Clear customer name
                 document.getElementById("customer-name").value = "";
 
-                // Re-render PayPal button (disabled because total is now 0)
+                // Re-render PayPal button disabled
                 renderPayPal();
             });
         },
         onError: (err) => {
             console.error(err);
-            alert("Payment could not be completed. Try again or use another device.");
+            alert("Payment could not be completed. Try again or another device.");
         }
     }).render('#paypal-button-container');
 }
@@ -151,6 +153,6 @@ function renderPayPal() {
 // Initial PayPal render
 renderPayPal();
 
-// ====== Update PayPal button whenever cart changes ======
+// ====== Auto-update PayPal button when cart changes ======
 const observer = new MutationObserver(renderPayPal);
 if(orderList) observer.observe(orderList, { childList: true });
