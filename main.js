@@ -33,8 +33,16 @@ renderCart();
 function addItemToCart(item, price, qty) {
     const line = `${item} x${qty} - $${(price*qty).toFixed(2)}`;
     order.push(line);
+
+    // Update localStorage
     localStorage.setItem("cartOrder", JSON.stringify(order));
     localStorage.setItem("cartTotal", (total + price*qty).toFixed(2));
+
+    // Update total before rendering
+    total += price * qty;
+
+    // Update cart bubble and cart page
+    if(bubbleTotal) bubbleTotal.textContent = total.toFixed(2); // <- this updates the bubble
     renderCart();
 }
 
