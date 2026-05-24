@@ -169,3 +169,26 @@ footer {
   transform: scale(1.1);
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
+.delivery-section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.delivery-section h2 {
+  color: #6d4c41;
+}
+
+.delivery-card {
+  background: #fffaf5;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.08);
+  line-height: 1.7;
+}
+
+.delivery-card h3 {
+  color: #a1887f;
+  margin-top: 1.5rem;
+}
